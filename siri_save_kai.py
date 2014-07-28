@@ -17,15 +17,16 @@ def main():
     print con.portstr
     con.flushInput()
     sreadTime = datetime.datetime.today()
-    stime = ('lifilm%s_%s_%s_%s_%s.csv' % (sreadTime.year, sreadTime.month, sreadTime.day, sreadTime.hour,sreadTime.minute))
+    stime = ('lifilm%s_%s_%s_%s.csv' % (sreadTime.year, sreadTime.month, sreadTime.day, sreadTime.hour))
    #print stime
     f = open( stime , 'a')
     f.close()
     cont = 0
+    x = 0
     #while 1:
-    for x in range(10):
-       # lop = 35
-        lop = 10
+    #for x in range(60):
+    while (x < 59): 
+        lop = 33
         add1 = 0
         add2 = 0
         add3 = 0
@@ -38,7 +39,6 @@ def main():
         for i in range(lop):
             str=con.readline()
             try:
-#            print str #test
                 add = str
                 items = shlex.split(add)
                 print items #test
@@ -68,13 +68,13 @@ def main():
             GPIO.output(24, GPIO.HIGH)
             GPIO.output(25, GPIO.LOW)
             cond = "uri"
-            os.system("sendmail -t < detect_uri.txt")
+#            os.system("sendmail -t < detect_uri.txt")
         else:
             if gus > 80 :
                 GPIO.output(23, GPIO.HIGH)
                 GPIO.output(25, GPIO.LOW)
                 cond = "eva"
-                os.system("sendmail -t < detect_eva.txt")
+ #               os.system("sendmail -t < detect_eva.txt")
             else:
                 GPIO.output(23, GPIO.LOW)
                 GPIO.output(24, GPIO.LOW)
@@ -82,25 +82,25 @@ def main():
                 cond ="normal"
         print "condition:" ,cond
         
-        #if cont == 10 :		
-        #if cont == 3 :		
-        f = open( stime , 'a')
-        readTime = datetime.datetime.today()
-        dy=time.strftime('%y/%m/%d %H:%M.%S',time.localtime())
-        f.write('%s , %.2f, %.2f, %.3f, %.3f, %s\n' % (dy,realtemp,humidity,realhumidity,gus,cond))
-        f.close()
-        print "save!"
-        #    cont = 1
-        #else :
-        #    cont += 1
-        #print "cont:" ,cont
-        print("-------------------------------------------")
-        #print x
+        if cont == 10 :		
+            f = open( stime , 'a')
+            readTime = datetime.datetime.today()
+            dy=time.strftime('%y/%m/%d %H:%M',time.localtime())
+            f.write('%s , %.2f, %.2f, %.3f, %.3f, %s\n' % (dy,realtemp,humidity,realhumidity,gus,cond))
+            f.close()
+            print "save!"
+            cont = 1
+            x += 1
+            
+        else :
+            cont += 1
+            print "cont:" ,cont
+            print("-------------------------------------------")
 
-    else:
-        scp_cmd = "scp -i okn_ubu1.pem "+stime+" ubuntu@54.92.62.157:~/lifilm_data"
-        os.system(scp_cmd)
-        print "end"
+        print "x:", x
+    scp_cmd = "scp -i okn_ubu1.pem "+stime+" ubuntu@54.92.62.157:~/lifilm_data"
+    os.system(scp_cmd)
+    print "end"
 
 if __name__ == '__main__':
     main()
