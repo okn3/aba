@@ -1,7 +1,5 @@
 # プロフラム一覧
 
-* bitbucket対応
-
 1. show_graph_1.py  
 	データをCSVから読み込んでいつのグラフに表示
 2. show_graph_3.py  
