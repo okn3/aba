@@ -32,13 +32,14 @@
 
 コマンド : `sudo date -s "08/01 8:00 2014"`
 
-修正して入力
+> 修正して入力
+
 
 2. cron設定（プログラムを自動実行にする）
 
 コマンド: `crontab -e`
 
-	末尾に書き足す→  `00 * * * * cd ~/Desktop/work; sudo python aba_test.py`
+末尾に書き足す→  `00 * * * * cd ~/Desktop/work; sudo python aba_test.py`
 
-	> aba_test.pyを置いているディレクトリを指定
+> aba_test.pyを置いているディレクトリを指定
 
