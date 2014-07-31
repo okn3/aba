@@ -18,6 +18,30 @@
 
 3. detect_mail.txtのTOのアドレスを送信先のアドレスに変更
 
+* メールサーバーの設定
+ ssmtpを使用します
+
+ 1.ssmtpのインストールi
+ 
+ `sudo apt-get install ssmtp`
+
+	全部yで
+ 
+ 2. 設定の編集
+ 
+ `sudo vi /etc/ssmtp/ssmtp.conf` を開き
+
+ 以下のコマンドを入力
+
+`mailhub=smtp.gmail.com:587
+AuthUser=[gmailのメールアドレス]
+AuthPass=[gmailのパスワード]
+AuthMethod=LOGIN
+UseSTARTTLS=YES
+UseTLS=Yes`
+
+
+
 #手動で実行
 
 １分毎にscvファイルに書き込まれ１時間で保存
