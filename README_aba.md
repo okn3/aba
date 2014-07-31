@@ -36,7 +36,7 @@ ssmtpを使用します
 
  以下のコマンドを入力
 
-`mailhub=smtp.gmail.com:587  
+mailhub=smtp.gmail.com:587  
 
 AuthUser=[gmailのメールアドレス]
 
@@ -46,8 +46,10 @@ AuthMethod=LOGIN
 
 UseSTARTTLS=YES
 
-UseTLS=Yes`
+UseTLS=Yes
 
+
+> 参考 Linuxブログ : ラズベリーパイ(raspbian)を使ってみる – 5分でメールを送信できるようにする - http://bit.ly/VTYJwV
 
 
 #手動で実行
