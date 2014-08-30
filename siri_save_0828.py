@@ -85,18 +85,25 @@ def main():
 
      #1分後の処理
         if cont == 10 :		
+            #csvにデータの書き込み
             f = open( stime , 'a')
             readTime = datetime.datetime.today()
             dy=time.strftime('%y/%m/%d %H:%M',time.localtime())
-           # f.write('%s , %.2f, %.2f, %.3f, %.3f, %s\n' % (dy,realtemp,humidity,realhumidity,gus,cond))
-
             f.write('%s , %.2f, %.2f, %.3f, %s\n' % (dy,realtemp,humidity,gus,cond))
             f.close()
+            
+            #realtime.csvを更新
+            f = open( 'lifilm_data/realtime.csv' , 'a')
+            readTime = datetime.datetime.today()
+            dy=time.strftime('%y/%m/%d %H:%M',time.localtime())
+            f.write('%s , %.2f, %.2f, %.3f, %s\n' % (dy,realtemp,humidity,gus,cond))
+            f.close()
+
             print "save!"
             cont = 1
             x += 1
 
-            sendMail()
+           # sendMail()
             
         else :
             cont += 1
