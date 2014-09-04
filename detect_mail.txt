@@ -1,6 +1,7 @@
-From:aba.lifilm@gmial.com
-to:oknryo@docomo.ne.jp
-Subject:排出を検知しました!
- 
+From:aba.lifilm@gmail.com
+to:okuno.ryo.411@gmail.com
+Subject:detect
 
-from Lifilm 
+alert
+
+from Lifilm
